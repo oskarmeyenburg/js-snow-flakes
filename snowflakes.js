@@ -8,9 +8,9 @@ window.SNOWFLAKE_MAX_SPEED = 0.15;
 window.SNOWFLAKE_MIN_SIZE = 5;
 window.SNOWFLAKE_MAX_SIZE = 15;
 window.SNOWFLAKE_ROTATION_SPEED = 25; // Maximum rotation per second of snowflakes in degrees
-window.SNOWFLAKE_NUMBER = 20; // Total count of snowflakes
+window.SNOWFLAKE_NUMBER = 15; // Total count of snowflakes
 window.SNOWFLAKE_CENTER_REDUCTION = true; // Less snowflakes in center of screen
-window.SNOWFLAKE_COLORS = ["#dddddd", "#f2f2f2", "#ffffff"]; // List of possible colors of snowflakes
+window.SNOWFLAKE_COLORS = ["#ddd", "#eee", "#fff"]; // List of possible colors of snowflakes
 window.SNOWFLAKE_SYMBOLS = ["❅", "❆", "*", "●"]; // List of possible symbols of snowflakes
 window.SNOWFLAKE_SHADOW = true; // Show a shadow around snowflakes
 window.SNOWFLAKE_SHADOW_COLOR = "#000"; // Shadow color around snowflakes
@@ -29,19 +29,13 @@ class SnowFlake {
         let snowflake_color = window.SNOWFLAKE_COLORS[Math.floor(Math.random() * window.SNOWFLAKE_COLORS.length)];
         let snowflake_symbol = window.SNOWFLAKE_SYMBOLS[Math.floor(Math.random() * window.SNOWFLAKE_SYMBOLS.length)];
 
-        this.y = y;
-        this.reset_position();
-        this.angle = Math.random() * 360;
-        this.vel_y = snowflake_speed;
-        this.vel_angle = (Math.random() * 2 - 1) * window.SNOWFLAKE_ROTATION_SPEED;
-        this.wave_offset = Math.random() * 3000;
+        this.y = y; // y-coord
+        this.a = Math.random() * 360; // angle
+        this.v = snowflake_speed; // velocity along y-axis
+        this.va = (Math.random() * 2 - 1) * window.SNOWFLAKE_ROTATION_SPEED; // angle velocity
+        this.o = Math.random() * 3000; // offest on sine curve
         this.div = document.createElement("div");
-        this.div.style.position = 'absolute';
-        this.div.style.userSelect = 'none';
-        this.div.style.webkitUserSelect = 'none';
-        this.div.style.webkitTouchCallout = 'none';
-        this.div.style.msUserSelect = 'none';
-        this.div.unselectable = 'on';
+        this.reset_position();
 
         let shadow_string = "";
         if (window.SNOWFLAKE_SHADOW) {
@@ -53,19 +47,25 @@ class SnowFlake {
         snowflakes.push(this);
     }
   	update(delta_time, time) {
-    	this.y += delta_time * this.vel_y;
-        this.angle += delta_time * this.vel_angle;
-        let rotation = `rotate(${this.angle}deg)`;
+    	this.y += delta_time * this.v;
+        this.a += delta_time * this.va;
+        let rotation = `rotate(${this.a}deg)`;
 
         this.div.style.cssText = `
             position: absolute;
-            left: ${(this.x + Math.sin(time / 1000 + this.wave_offset) * 0.01) * screen_width}px;
+            left: ${(this.x + Math.sin(time / 1000 + this.o) * 0.01) * screen_width}px;
             top: ${this.y * screen_height}px;
             -webkit-transform: ${rotation};
             -moz-transform: ${rotation};
             -ms-transform: ${rotation};
             -o-transform: ${rotation};
             transform: ${rotation};
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -ms-user-select: none;
+            unselectable: on;
+            pointer-events: none;
         `;
 
         if (this.y > 1) {
@@ -112,6 +112,7 @@ const main = () => {
     }
 
     container = document.createElement("div");    
+    container.style.pointerEvents = 'none';
     container.style.overflow = 'hidden';
     container.style.position = 'fixed';
     container.style.top = '0';
