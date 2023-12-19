@@ -1,8 +1,8 @@
 // Create minimized version with https://minify-js.com
 
 // Adjustable variables
-window.SNOWFLAKE_START_DATE = 1.12; // Included
-window.SNOWFLAKE_END_DATE = 1.1; // Excluded
+window.SNOWFLAKE_START_DATE = 12.1; // Included
+window.SNOWFLAKE_END_DATE = 12.30; // Excluded
 window.SNOWFLAKE_MIN_SPEED = 0.05;
 window.SNOWFLAKE_MAX_SPEED = 0.15;
 window.SNOWFLAKE_MIN_SIZE = 5;
@@ -107,7 +107,7 @@ const main = () => {
     if (window.SNOWFLAKE_START_DATE > window.SNOWFLAKE_END_DATE) {
         window.SNOWFLAKE_END_DATE += 12;
     }
-    if (!(window.SNOWFLAKE_START_DATE < current_date_number < window.SNOWFLAKE_END_DATE)) {
+    if (!(window.SNOWFLAKE_START_DATE <= current_date_number < window.SNOWFLAKE_END_DATE)) {
         return;
     }
 
