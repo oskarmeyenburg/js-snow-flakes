@@ -1,7 +1,7 @@
 // Create minimized version with https://minify-js.com
 
 // Adjustable variables
-window.SNOWFLAKE_START_DATE = 12.1; // Included
+window.SNOWFLAKE_START_DATE = 12.02; // Included
 window.SNOWFLAKE_END_DATE = 12.30; // Excluded
 window.SNOWFLAKE_MIN_SPEED = 0.05;
 window.SNOWFLAKE_MAX_SPEED = 0.15;
@@ -104,21 +104,25 @@ var screen_width = 0;
 var screen_height = 0;
 
 const main = () => {
-    if (window.SNOWFLAKE_START_DATE > window.SNOWFLAKE_END_DATE) {
-        window.SNOWFLAKE_END_DATE += 12;
+    if (window.SNOWFLAKE_START_DATE > window.SNOWFLAKE_END_DATE && window.SNOWFLAKE_END_DATE < current_date_number && current_date_number < window.SNOWFLAKE_START_DATE || !(window.SNOWFLAKE_START_DATE <= current_date_number && current_date_number < window.SNOWFLAKE_END_DATE)) {
+        return
     }
-    if (!(window.SNOWFLAKE_START_DATE <= current_date_number < window.SNOWFLAKE_END_DATE)) {
-        return;
-    }
-
-    container = document.createElement("div");    
-    container.style.pointerEvents = 'none';
-    container.style.overflow = 'hidden';
-    container.style.position = 'fixed';
-    container.style.top = '0';
-    container.style.left = '0';
-    container.style.width = '100%';
-    container.style.height = '100%';
+    
+    container = document.createElement("div");  
+    container.style.cssText = `
+            position: fixed;
+            overflow: hidden;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+            -ms-user-select: none;
+            unselectable: on;
+            pointer-events: none;
+        `;
     document.body.appendChild(container);
 
     for (let y = 0; y < 1; y += 1 / window.SNOWFLAKE_NUMBER) {
