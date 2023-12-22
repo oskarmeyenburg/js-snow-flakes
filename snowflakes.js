@@ -3,10 +3,10 @@
 // Adjustable variables
 window.SNOWFLAKE_START_DATE = 12.02; // Included
 window.SNOWFLAKE_END_DATE = 12.30; // Excluded
-window.SNOWFLAKE_MIN_SPEED = 0.05;
-window.SNOWFLAKE_MAX_SPEED = 0.15;
-window.SNOWFLAKE_MIN_SIZE = 5;
-window.SNOWFLAKE_MAX_SIZE = 15;
+window.SNOWFLAKE_SPEED = 1; // Speed of snowflakes
+window.SNOWFLAKE_SPEED_DIVERGENCE = 3; // Divergence range for random speed of snowflakes
+window.SNOWFLAKE_MIN_SIZE = 5; // Minimal snowflake size
+window.SNOWFLAKE_MAX_SIZE = 15; // Maximal snowflake size
 window.SNOWFLAKE_ROTATION_SPEED = 25; // Maximum rotation per second of snowflakes in degrees
 window.SNOWFLAKE_NUMBER = 15; // Total count of snowflakes
 window.SNOWFLAKE_CENTER_REDUCTION = true; // Less snowflakes in center of screen
@@ -14,17 +14,16 @@ window.SNOWFLAKE_COLORS = ["#ddd", "#eee", "#fff"]; // List of possible colors o
 window.SNOWFLAKE_SYMBOLS = ["❅", "❆", "*", "●"]; // List of possible symbols of snowflakes
 window.SNOWFLAKE_SHADOW = true; // Show a shadow around snowflakes
 window.SNOWFLAKE_SHADOW_COLOR = "#000"; // Shadow color around snowflakes
-window.SNOWFLAKE_SPAWN_ON_SCREEN = false; // Spawn snowflakes on screen when loading
 
 
-// Constants
+// Current date used to interupt program
 const localDate = new Date();
-const current_date_number = localDate.getMonth() + 1 + localDate.getDate() * 0.01
+const current_date_number = localDate.getMonth() + 1 + localDate.getDate() * 0.01;
 
 
 class SnowFlake {
 	constructor(y) {
-        let snowflake_speed = Math.random() * (window.SNOWFLAKE_MAX_SPEED - window.SNOWFLAKE_MIN_SPEED) + window.SNOWFLAKE_MIN_SPEED;
+        let snowflake_speed = Math.random() * window.SNOWFLAKE_SPEED_DIVERGENCE * 0.01 + window.SNOWFLAKE_SPEED * 0.05;
         let snowflake_size = Math.random() * (window.SNOWFLAKE_MAX_SIZE - window.SNOWFLAKE_MIN_SIZE) + window.SNOWFLAKE_MIN_SIZE;
         let snowflake_color = window.SNOWFLAKE_COLORS[Math.floor(Math.random() * window.SNOWFLAKE_COLORS.length)];
         let snowflake_symbol = window.SNOWFLAKE_SYMBOLS[Math.floor(Math.random() * window.SNOWFLAKE_SYMBOLS.length)];
@@ -77,7 +76,7 @@ class SnowFlake {
         if (window.SNOWFLAKE_CENTER_REDUCTION) {
             this.x = 1 / (1 + Math.exp(-10 * (this.x - 0.5)));
         }
-        this.y -= 1.1
+        this.y -= 1.1;
     }
 }
 
@@ -105,7 +104,7 @@ var screen_height = 0;
 
 const main = () => {
     if (window.SNOWFLAKE_START_DATE > window.SNOWFLAKE_END_DATE && window.SNOWFLAKE_END_DATE < current_date_number && current_date_number < window.SNOWFLAKE_START_DATE || !(window.SNOWFLAKE_START_DATE <= current_date_number && current_date_number < window.SNOWFLAKE_END_DATE)) {
-        return
+        return;
     }
     
     container = document.createElement("div");  
@@ -126,10 +125,10 @@ const main = () => {
     document.body.appendChild(container);
 
     for (let y = 0; y < 1; y += 1 / window.SNOWFLAKE_NUMBER) {
-        new SnowFlake(y + 0.05 + (+window.SNOWFLAKE_SPAWN_ON_SCREEN));
+        new SnowFlake(y + 0.05);
     }
 
-    window.SNOWFLAKE_SPAWN_ON_SCREEN = 0
+    window.SNOWFLAKE_SPAWN_ON_SCREEN = 0;
     window.requestAnimationFrame(update);
 }
 

@@ -1,34 +1,50 @@
 # SnowFlakesJs
-**SnowFlakesJs** is a script that can be inserted into an HTML header to add a snowfall effect to a website. You can customize the appearance of the snowflakes by adjusting the constants at the beginning of the script.
+**SnowFlakesJs** is a script that can be inserted into an HTML header to add a snowfall effect to a website. You can customize the appearance of the snowflakes by adjusting some variables.
 
 To integrate the script into your HTML file, copy and paste the following line into the header:<br>
-``<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>``
-<br><br>
-If you prefer to modify the constants, add another script tag containing your adjustments. Refer to the list of available constants below for customization options.
-Here is an example for the usage with adjustments to SNOWFLAKE_MAX_SPEED and SNOWFLAKE_NUMBER.
+```
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>
+```
+<br>
+
+If you prefer to modify the variables, add another script tag containing your adjustments. Refer to the list of available variables below for customization options.
+Here is an example for the usage with adjustments to SNOWFLAKE_SPEED and SNOWFLAKE_NUMBER.
 ```
 <script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>
 <script>
-    SNOWFLAKE_MAX_SPEED = 0.2;
+    SNOWFLAKE_SPEED = 0.5;
     SNOWFLAKE_NUMBER = 30;
 </script>
 ```
+<br>
 
-## Customizable constants
+In case you encounter performance issues, consider using an alternative version that uses CSS for animations. Include the script as follows:
+```
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>
+```
+<br>
+
+Feel free to experiment with other variables to achieve the desired visual effect on your website!
+
+## Customizable variables
 ### SNOWFLAKE_START_DATE and SNOWFLAKE_END_DATE
-Set the time range during which the snowflake effect is active. The start date is inclusive and the end date is exclusive. By default the effect will be effect only in december.
-<br>Default:<br>``SNOWFLAKE_START_DATE = 1.12;``<br>``SNOWFLAKE_END_DATE = 1.1;``<br>
+Set the time range during which the snowflake effect is active. The end date is exclusive. By default the effect will be effect active around Christmas. The date format consists of the month followed by a decimal point and the day. Ensure single-digit days have leading zeros.
+<br>Default:<br>``SNOWFLAKE_START_DATE = 12.22;``<br>``SNOWFLAKE_END_DATE = 12.26;``<br>
 
-### SNOWFLAKE_MIN_SPEED and SNOWFLAKE_MAX_SPEED
-Determine the range of random downward velocities for each snowflake. The velocity is a percentage of the screen size, ranging from SNOWFLAKE_MIN_SPEED to SNOWFLAKE_MAX_SPEED.
-<br>Default:<br>``SNOWFLAKE_MIN_SPEED = 0.05;``<br>``SNOWFLAKE_MAX_SPEED = 0.15;``<br>
+### SNOWFLAKE_SPEED
+Determine the average downward velocity for each snowflake.
+<br>Default:<br>``SNOWFLAKE_SPEED = 1;``
+
+### SNOWFLAKE_SPEED_DIVERGENCE
+Specify the range for the speed of the snowflakes as a divergence.
+<br>Default:<br>``SNOWFLAKE_SPEED = 1;``
 
 ### SNOWFLAKE_MIN_SIZE and SNOWFLAKE_MAX_SIZE
-Set the range of random sizes in pixels for each snowflake, varying from SNOWFLAKE_MIN_SIZE to SNOWFLAKE_MAX_SIZE.
+Set the range of random sizes in pixels for each snowflake.
 <br>Default:<br>``SNOWFLAKE_MIN_SIZE = 5;``<br>``SNOWFLAKE_MAX_SIZE = 15;``<br>
 
 ### SNOWFLAKE_ROTATION_SPEED
-Control the rotation speed of snowflakes in degrees per second.
+Control the rotation speed of snowflakes in degrees per second. This option is not supported by the CSS version.
 <br>Default:<br>``SNOWFLAKE_ROTATION_SPEED = 25;``<br>
 
 ### SNOWFLAKE_NUMBER
@@ -52,9 +68,9 @@ Enable a slight shadow behind snowflakes.
 <br>Default:<br>``SNOWFLAKE_SHADOW = true;``<br>
 
 ### SNOWFLAKE_SHADOW_COLOR
-Set the color of shadows behind snowflakes when SNOWFLAKE_SHADOW is enabled.
+Set the color of shadows behind snowflakes when shadows are enabled.
 <br>Default:<br>``SNOWFLAKE_SHADOW_COLOR = #000000;``<br>
 
 ### SNOWFLAKE_SPAWN_ON_SCREEN
-Spawn snowflakes on the screen instead of above it when the site loads.
+Spawn snowflakes on the screen instead of above it when the site loads. This option is not supported by the CSS version.
 <br>Default:<br>``SNOWFLAKE_SPAWN_ON_SCREEN = false;``<br>
