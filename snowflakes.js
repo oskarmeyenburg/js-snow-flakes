@@ -1,8 +1,8 @@
 // Create minimized version with https://minify-js.com
 
 // Adjustable variables
-window.SNOWFLAKE_START_DATE = 12.02; // Included
-window.SNOWFLAKE_END_DATE = 12.30; // Excluded
+window.SNOWFLAKE_START_DATE = 12.22; // Included
+window.SNOWFLAKE_END_DATE = 12.26; // Excluded
 window.SNOWFLAKE_SPEED = 1; // Speed of snowflakes
 window.SNOWFLAKE_SPEED_DIVERGENCE = 3; // Divergence range for random speed of snowflakes
 window.SNOWFLAKE_MIN_SIZE = 5; // Minimal snowflake size
@@ -14,6 +14,7 @@ window.SNOWFLAKE_COLORS = ["#ddd", "#eee", "#fff"]; // List of possible colors o
 window.SNOWFLAKE_SYMBOLS = ["❅", "❆", "*", "●"]; // List of possible symbols of snowflakes
 window.SNOWFLAKE_SHADOW = true; // Show a shadow around snowflakes
 window.SNOWFLAKE_SHADOW_COLOR = "#000"; // Shadow color around snowflakes
+window.SNOWFLAKE_SPAWN_ON_SCREEN = false; // Spawn snowflakes on screen while loading page
 
 
 // Current date used to interupt program
@@ -125,10 +126,9 @@ const main = () => {
     document.body.appendChild(container);
 
     for (let y = 0; y < 1; y += 1 / window.SNOWFLAKE_NUMBER) {
-        new SnowFlake(y + 0.05);
+        new SnowFlake(y + 0.05 + (+window.SNOWFLAKE_SPAWN_ON_SCREEN));
     }
 
-    window.SNOWFLAKE_SPAWN_ON_SCREEN = 0;
     window.requestAnimationFrame(update);
 }
 

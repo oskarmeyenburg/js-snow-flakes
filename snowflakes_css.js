@@ -9,7 +9,7 @@ window.SNOWFLAKE_NUMBER = 15; // Total count of snowflakes
 window.SNOWFLAKE_CENTER_REDUCTION = true; // Less snowflakes in center of screen
 window.SNOWFLAKE_COLORS = ["#ddd", "#eee", "#fff"]; // List of possible colors of snowflakes
 window.SNOWFLAKE_SYMBOLS = ["❅", "❆", "*", "●"]; // List of possible symbols of snowflakes
-window.SNOWFLAKE_SHADOW = true; // Show a shadow around snowflakes
+window.SNOWFLAKE_SHADOW = true; // Show a shadow behind snowflakes
 window.SNOWFLAKE_SHADOW_COLOR = "#000"; // Shadow color around snowflakes
 
 

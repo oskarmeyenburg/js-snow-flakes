@@ -18,9 +18,9 @@ Here is an example for the usage with adjustments to SNOWFLAKE_SPEED and SNOWFLA
 ```
 <br>
 
-In case you encounter performance issues, consider using an alternative version that uses CSS for animations. Include the script as follows:
+In case you encounter performance issues, consider using an alternative version that uses CSS for animations. You might also prefer to use it, as it is less subsceptible to bugs. Include the script as follows:
 ```
-<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes_css.min.js"></script>
 ```
 <br>
 
@@ -37,7 +37,7 @@ Determine the average downward velocity for each snowflake.
 
 ### SNOWFLAKE_SPEED_DIVERGENCE
 Specify the range for the speed of the snowflakes as a divergence.
-<br>Default:<br>``SNOWFLAKE_SPEED = 1;``
+<br>Default:<br>``SNOWFLAKE_SPEED_DIVERGENCE = 3;``
 
 ### SNOWFLAKE_MIN_SIZE and SNOWFLAKE_MAX_SIZE
 Set the range of random sizes in pixels for each snowflake.
@@ -49,7 +49,7 @@ Control the rotation speed of snowflakes in degrees per second. This option is n
 
 ### SNOWFLAKE_NUMBER
 Set the total count of snowflakes spawned at the beginning.
-<br>Default:<br>``SNOWFLAKE_NUMBER = 20;``<br>
+<br>Default:<br>``SNOWFLAKE_NUMBER = 15;``<br>
 
 ### SNOWFLAKE_CENTER_REDUCTION
 Reduce the spawning of snowflakes in the center of the screen.
@@ -57,7 +57,7 @@ Reduce the spawning of snowflakes in the center of the screen.
 
 ### SNOWFLAKE_COLORS
 An array containing possible colors from which the color for each new snowflake is randomly chosen.
-<br>Default:<br>``SNOWFLAKE_COLORS = ["#dddddd", "#f2f2f2", "#ffffff"];``<br>
+<br>Default:<br>``SNOWFLAKE_COLORS = ["#dddddd", "#eeeeee", "#ffffff"];``<br>
 
 ### SNOWFLAKE_SYMBOLS
 Each newly spawned snowflake is assigned a random symbol from this array.
