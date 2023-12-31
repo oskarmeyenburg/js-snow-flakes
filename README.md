@@ -28,7 +28,7 @@ Feel free to experiment with other variables to achieve the desired visual effec
 
 ## Customizable variables
 ### SNOWFLAKE_START_DATE and SNOWFLAKE_END_DATE
-Set the time range during which the snowflake effect is active. The end date is exclusive. By default the effect will be effect active around Christmas. The date format consists of the month followed by a decimal point and the day. Ensure single-digit days have leading zeros.
+Set the time range during which the snowflake effect is active. The end date is exclusive. By default the effect will be effect active around Christmas. The date format consists of the month followed by a decimal point and the day. Ensure single-digit days have leading zeros. Months should not have leading zeros.
 <br>Default:<br>``SNOWFLAKE_START_DATE = 12.22;``<br>``SNOWFLAKE_END_DATE = 12.26;``<br>
 
 ### SNOWFLAKE_SPEED
