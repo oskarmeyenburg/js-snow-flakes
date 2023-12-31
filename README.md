@@ -1,16 +1,26 @@
 # SnowFlakesJs
 **SnowFlakesJs** is a script that can be inserted into an HTML header to add a snowfall effect to a website. You can customize the appearance of the snowflakes by adjusting some variables.
+<br><br>
 
-To integrate the script into your HTML file, copy and paste the following line into the header:<br>
+## Integration
+To integrate the script into your HTML file, copy and paste one of the following tags into a HTML-header:<br>
+JavaScript-version:
+<br>
 ```
-<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs@main/snowflakes.min.js"></script>
+```
+<br>
+Or the CSS-version:<br><br>
+
+```
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs@main/snowflakes_css.min.js"></script>
 ```
 <br>
 
 If you prefer to modify the variables, add another script tag containing your adjustments. Refer to the list of available variables below for customization options.
 Here is an example for the usage with adjustments to SNOWFLAKE_SPEED and SNOWFLAKE_NUMBER.
 ```
-<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs@main/snowflakes.min.js"></script>
 <script>
     SNOWFLAKE_SPEED = 0.5;
     SNOWFLAKE_NUMBER = 30;
@@ -20,11 +30,17 @@ Here is an example for the usage with adjustments to SNOWFLAKE_SPEED and SNOWFLA
 
 In case you encounter performance issues, consider using an alternative version that uses CSS for animations. You might also prefer to use it, as it is less subsceptible to bugs. Include the script as follows:
 ```
-<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs/snowflakes_css.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/oskarmeyenburg/SnowFlakesJs@main/snowflakes_css.min.js"></script>
 ```
 <br>
 
 Feel free to experiment with other variables to achieve the desired visual effect on your website!
+<br><br>
+
+## Example
+You can find an example, which uses the CSS-version, here:<br>
+https://github.com/oskarmeyenburg/SnowFlakesJs/blob/main/main.html
+<br><br>
 
 ## Customizable variables
 ### SNOWFLAKE_START_DATE and SNOWFLAKE_END_DATE
