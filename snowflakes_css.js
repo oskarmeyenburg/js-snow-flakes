@@ -1,3 +1,5 @@
+// Create minimized version with https://minify-js.com
+
 // Adjustable variables
 window.SNOWFLAKE_START_DATE = 12.22; // Included
 window.SNOWFLAKE_END_DATE = 12.26; // Excluded
@@ -38,9 +40,15 @@ const spawn_snowflake = () => {
 }
 
 const main = () => {
-    // Interupt program if date not matching
-    if (window.SNOWFLAKE_START_DATE > window.SNOWFLAKE_END_DATE && window.SNOWFLAKE_END_DATE < current_date_number && current_date_number < window.SNOWFLAKE_START_DATE || !(window.SNOWFLAKE_START_DATE <= current_date_number && current_date_number < window.SNOWFLAKE_END_DATE)) {
-        return;
+    // Interupt program if date does not match
+    if (window.SNOWFLAKE_START_DATE < window.SNOWFLAKE_END_DATE) {
+        if (!(window.SNOWFLAKE_START_DATE < current_date_number && current_date_number < window.SNOWFLAKE_END_DATE)) {
+            return;
+        }
+    } else {
+        if (window.SNOWFLAKE_END_DATE < current_date_number && current_date_number < window.SNOWFLAKE_START_DATE) {
+            return;
+        }
     }
 
     // Add snowflake style animations
@@ -55,4 +63,4 @@ const main = () => {
     }
 }
 
-main();
+window.requestAnimationFrame(main);

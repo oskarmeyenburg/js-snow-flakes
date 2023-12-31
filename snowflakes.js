@@ -104,8 +104,15 @@ var screen_width = 0;
 var screen_height = 0;
 
 const main = () => {
-    if (window.SNOWFLAKE_START_DATE > window.SNOWFLAKE_END_DATE && window.SNOWFLAKE_END_DATE < current_date_number && current_date_number < window.SNOWFLAKE_START_DATE || !(window.SNOWFLAKE_START_DATE <= current_date_number && current_date_number < window.SNOWFLAKE_END_DATE)) {
-        return;
+    // Interupt program if date does not match
+    if (window.SNOWFLAKE_START_DATE < window.SNOWFLAKE_END_DATE) {
+        if (!(window.SNOWFLAKE_START_DATE < current_date_number && current_date_number < window.SNOWFLAKE_END_DATE)) {
+            return;
+        }
+    } else {
+        if (window.SNOWFLAKE_END_DATE < current_date_number && current_date_number < window.SNOWFLAKE_START_DATE) {
+            return;
+        }
     }
     
     container = document.createElement("div");  
