@@ -1,5 +1,5 @@
-# SnowFlakesJs
-**SnowFlakesJs** is a script that can be inserted into an HTML header to add a snowfall effect to a website. You can customize the appearance of the snowflakes by adjusting some variables.
+# JS Snow Flakes
+**JS Snow Flakes** is a script that can be inserted into an HTML header to add a snowfall effect to a website. You can customize the appearance of the snowflakes by adjusting some variables.
 <br><br>
 
 ## Integration
